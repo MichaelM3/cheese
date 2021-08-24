@@ -2,7 +2,15 @@ class CheeseController < ApplicationController
 
     # GET /cheese
     def index
-        render(json: { hello: "Cheese World" })
+        cheeses = Cheese.all
+        render json: cheeses
+    end
+
+    def show
+        # find a cheese using the ID from the URL
+        # send a JSON response using that cheese object
+        cheese = Cheese.find_by(id: params[:id])
+        render json: cheese
     end
 
 end
